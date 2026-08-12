@@ -37,6 +37,6 @@ export default defineEventHandler(async (event) => {
     steamId32: row.SteamID32 as number,
     alias: row.Alias as string | null,
     country: row.Country as string | null,
-    worldRecords: row.wrs as number
+    serverRecords: row.wrs as number
   }))
 })

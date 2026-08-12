@@ -29,7 +29,7 @@ const { data: recent, status: recentStatus } = await useFetch('/api/gokz/recent'
     <div class="grid gap-10 lg:grid-cols-2">
       <section>
         <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <h2 class="text-lg font-semibold text-neutral-100">Top players by world records held</h2>
+          <h2 class="text-lg font-semibold text-neutral-100">Top players by server records held</h2>
         </div>
         <div class="flex flex-wrap items-center gap-3 mb-4">
           <TabGroup v-model="mode" :options="modeOptions" />
@@ -42,7 +42,7 @@ const { data: recent, status: recentStatus } = await useFetch('/api/gokz/recent'
               <tr>
                 <th class="px-4 py-2 font-medium">Rank</th>
                 <th class="px-4 py-2 font-medium">Player</th>
-                <th class="px-4 py-2 font-medium text-right">WRs</th>
+                <th class="px-4 py-2 font-medium text-right">SRs</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-neutral-800">
@@ -58,7 +58,7 @@ const { data: recent, status: recentStatus } = await useFetch('/api/gokz/recent'
                   {{ p.alias ?? 'Unknown' }}
                   <span v-if="p.country" class="text-neutral-500 text-xs ml-1">{{ p.country }}</span>
                 </td>
-                <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-200">{{ p.worldRecords }}</td>
+                <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-200">{{ p.serverRecords }}</td>
               </tr>
             </tbody>
           </table>
