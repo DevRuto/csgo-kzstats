@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const { public: pub } = useRuntimeConfig()
+</script>
+
 <template>
   <div>
     <div class="mb-10">
@@ -10,6 +14,7 @@
 
     <div class="grid gap-6 sm:grid-cols-2">
       <NuxtLink
+        v-if="pub.gokzEnabled"
         to="/gokz"
         class="group rounded-xl border border-neutral-800 bg-neutral-900/60 p-6 transition-colors hover:border-amber-400/50"
       >
@@ -21,6 +26,7 @@
       </NuxtLink>
 
       <NuxtLink
+        v-if="pub.kztimerEnabled"
         to="/kztimer"
         class="group rounded-xl border border-neutral-800 bg-neutral-900/60 p-6 transition-colors hover:border-amber-400/50"
       >

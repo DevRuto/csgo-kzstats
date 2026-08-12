@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+const { public: pub } = useRuntimeConfig()
 const section = computed(() => {
   if (route.path.startsWith('/gokz')) return 'gokz'
   if (route.path.startsWith('/kztimer')) return 'kztimer'
@@ -16,6 +17,7 @@ const section = computed(() => {
 
       <nav class="flex items-center gap-4 text-sm">
         <NuxtLink
+          v-if="pub.gokzEnabled"
           to="/gokz"
           class="transition-colors"
           :class="section === 'gokz' ? 'text-amber-400' : 'text-neutral-400 hover:text-neutral-100'"
@@ -23,6 +25,7 @@ const section = computed(() => {
           GOKZ
         </NuxtLink>
         <NuxtLink
+          v-if="pub.kztimerEnabled"
           to="/kztimer"
           class="transition-colors"
           :class="section === 'kztimer' ? 'text-amber-400' : 'text-neutral-400 hover:text-neutral-100'"

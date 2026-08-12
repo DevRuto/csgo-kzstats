@@ -20,6 +20,9 @@ function basePoolConfig() {
 export function gokzDb(): Pool {
   if (!gokzPool) {
     const { db } = useRuntimeConfig()
+    if (!db.gokzDatabase) {
+      throw createError({ statusCode: 404, statusMessage: 'GOKZ is not configured on this server' })
+    }
     gokzPool = createPool({ ...basePoolConfig(), database: db.gokzDatabase })
   }
   return gokzPool
@@ -28,6 +31,9 @@ export function gokzDb(): Pool {
 export function kztimerDb(): Pool {
   if (!kztimerPool) {
     const { db } = useRuntimeConfig()
+    if (!db.kztimerDatabase) {
+      throw createError({ statusCode: 404, statusMessage: 'KZTimer is not configured on this server' })
+    }
     kztimerPool = createPool({ ...basePoolConfig(), database: db.kztimerDatabase })
   }
   return kztimerPool

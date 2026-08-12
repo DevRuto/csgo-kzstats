@@ -45,7 +45,15 @@ DB_KZTIMER_DATABASE=kztimer
   `gokz` and `kztimer`, which match the plugins' defaults, so you likely won't need to change them.
 
 You only need one of the two databases for this to work. If you only run GOKZ, leave the
-KZTimer settings as-is (and vice versa).
+KZTimer settings as-is (and vice versa) &mdash; or, to hide that section entirely instead of
+just leaving it empty of data, set its database variable to nothing:
+
+```ini
+DB_KZTIMER_DATABASE=
+```
+
+An empty `DB_GOKZ_DATABASE` or `DB_KZTIMER_DATABASE` removes that plugin's nav link, homepage
+card, and routes from the site rather than showing an empty section.
 
 Run the app:
 
