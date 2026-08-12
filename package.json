@@ -1,5 +1,5 @@
 {
-  "name": "kzstats-local",
+  "name": "csgo-kzstats",
   "type": "module",
   "private": true,
   "scripts": {

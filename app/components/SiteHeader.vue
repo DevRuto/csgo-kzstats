@@ -12,7 +12,7 @@ const section = computed(() => {
   <header class="border-b border-neutral-800 bg-neutral-950/80 backdrop-blur sticky top-0 z-10">
     <div class="mx-auto max-w-6xl px-4 py-3 flex flex-wrap items-center gap-x-6 gap-y-2">
       <NuxtLink to="/" class="font-semibold tracking-tight text-neutral-100 hover:text-amber-400 transition-colors">
-        kzstats<span class="text-amber-400">.local</span>
+        csgo<span class="text-amber-400">.kzstats</span>
       </NuxtLink>
 
       <nav class="flex items-center gap-4 text-sm">

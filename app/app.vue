@@ -6,7 +6,7 @@
       <NuxtPage />
     </main>
     <footer class="mx-auto max-w-6xl px-4 py-10 text-sm text-neutral-600">
-      kzstats-local &mdash; reads directly from the local gokz and kztimer databases.
+      csgo-kzstats &mdash; reads directly from the local gokz and kztimer databases.
     </footer>
   </div>
 </template>

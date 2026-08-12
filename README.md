@@ -1,4 +1,4 @@
-# kzlocal-stats
+# csgo-kzstats
 
 A local leaderboard site for **Kreedz Climbing (KZ)** servers. It reads directly from the
 MySQL/MariaDB databases used by the **GOKZ** and/or **KZTimer** SourceMod plugins and renders
@@ -80,7 +80,7 @@ A `Dockerfile` is included for running the app in a container. It expects your G
 database to already be running somewhere reachable (this image only builds and serves the app).
 
 ```bash
-docker build -t kzlocal-stats .
+docker build -t csgo-kzstats .
 docker run -d -p 3000:3000 \
   -e DB_HOST=host.docker.internal \
   -e DB_PORT=3306 \
@@ -88,7 +88,7 @@ docker run -d -p 3000:3000 \
   -e DB_PASSWORD=your_db_password \
   -e DB_GOKZ_DATABASE=gokz \
   -e DB_KZTIMER_DATABASE=kztimer \
-  kzlocal-stats
+  csgo-kzstats
 ```
 
 Open [http://localhost:3000](http://localhost:3000). Use `host.docker.internal` for `DB_HOST` if

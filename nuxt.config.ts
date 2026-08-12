@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   app: {
     head: {
-      title: 'kzstats-local',
+      title: 'csgo-kzstats',
       meta: [
         { name: 'description', content: 'Local leaderboard for GOKZ and KZTimer records' }
       ]
