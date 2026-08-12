@@ -71,3 +71,23 @@ export const KZTIMER_JUMP_TYPES: Record<string, { name: string; prefix: string }
 export function kztimerJumpTypeName(key: string): string {
   return KZTIMER_JUMP_TYPES[key]?.name ?? key
 }
+
+// GOKZ's Players.SteamID32 stores the Steam3 account id (the "Z" component of a
+// Steam2 id), while KZTimer's playerrank/playertimes.steamid stores the classic
+// "STEAM_X:Y:Z" string. These convert between the two so a player can be looked
+// up across both plugins' databases. SourceMod's modern engines (CS:GO/CS2, which
+// both plugins target) always report the universe digit as 1, so that's what we
+// generate here to match what's actually stored in KZTimer's database.
+export function steamId32ToSteam2(accountId: number): string {
+  const y = accountId % 2
+  const z = Math.floor(accountId / 2)
+  return `STEAM_1:${y}:${z}`
+}
+
+export function steam2ToSteamId32(steamId: string): number | null {
+  const match = /^STEAM_[0-5]:([01]):(\d+)$/.exec(steamId)
+  if (!match) return null
+  const y = Number(match[1])
+  const z = Number(match[2])
+  return z * 2 + y
+}

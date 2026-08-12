@@ -18,7 +18,10 @@ const { data: recent, status: recentStatus } = await useFetch('/api/gokz/recent'
 
 <template>
   <div>
-    <h1 class="text-2xl font-bold text-neutral-100 mb-6">GOKZ</h1>
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <h1 class="text-2xl font-bold text-neutral-100">GOKZ</h1>
+      <PlayerSearch system="gokz" />
+    </div>
 
     <div v-if="stats" class="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-10">
       <StatCard label="Maps" :value="stats.maps" />
@@ -55,7 +58,7 @@ const { data: recent, status: recentStatus } = await useFetch('/api/gokz/recent'
               <tr v-for="p in topPlayers" :key="p.steamId32" class="hover:bg-neutral-900/50">
                 <td class="px-4 py-2"><RankBadge :rank="p.rank" /></td>
                 <td class="px-4 py-2 text-neutral-200">
-                  {{ p.alias ?? 'Unknown' }}
+                  <NuxtLink :to="`/players/${p.steamId32}`" class="hover:text-amber-400">{{ p.alias ?? 'Unknown' }}</NuxtLink>
                   <span v-if="p.country" class="text-neutral-500 text-xs ml-1">{{ p.country }}</span>
                 </td>
                 <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-200">{{ p.serverRecords }}</td>
@@ -73,7 +76,7 @@ const { data: recent, status: recentStatus } = await useFetch('/api/gokz/recent'
           <div v-for="r in recent" :key="r.id" class="px-4 py-2.5 text-sm flex items-center justify-between gap-3">
             <div class="min-w-0">
               <div class="text-neutral-200 truncate">
-                <span class="font-medium">{{ r.alias ?? 'Unknown' }}</span>
+                <NuxtLink :to="`/players/${r.steamId32}`" class="font-medium hover:text-amber-400">{{ r.alias ?? 'Unknown' }}</NuxtLink>
                 <span class="text-neutral-500"> on </span>
                 <NuxtLink :to="`/gokz/maps/${r.map}`" class="hover:text-amber-400">{{ r.map }}</NuxtLink>
               </div>

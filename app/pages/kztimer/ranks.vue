@@ -29,7 +29,7 @@ const { data: ranks, status } = await useFetch('/api/kztimer/ranks', { query: { 
           <tr v-for="p in ranks" :key="p.steamId" class="hover:bg-neutral-900/50">
             <td class="px-4 py-2"><RankBadge :rank="p.rank" /></td>
             <td class="px-4 py-2 text-neutral-200">
-              {{ p.name }}
+              <NuxtLink :to="`/players/${steam2ToSteamId32(p.steamId)}`" class="hover:text-amber-400">{{ p.name }}</NuxtLink>
               <span v-if="p.country" class="text-neutral-500 text-xs ml-1">{{ p.country }}</span>
             </td>
             <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-200">{{ p.points.toLocaleString() }}</td>

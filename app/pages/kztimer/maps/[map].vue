@@ -57,7 +57,9 @@ const { data: records, status } = await useFetch(() => `/api/kztimer/maps/${mapN
           </tr>
           <tr v-for="r in records" :key="r.steamId" class="hover:bg-neutral-900/50">
             <td class="px-4 py-2"><RankBadge :rank="r.rank" /></td>
-            <td class="px-4 py-2 text-neutral-200">{{ r.name }}</td>
+            <td class="px-4 py-2 text-neutral-200">
+              <NuxtLink :to="`/players/${steam2ToSteamId32(r.steamId)}`" class="hover:text-amber-400">{{ r.name }}</NuxtLink>
+            </td>
             <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-200">{{ formatDuration(r.runTime) }}</td>
             <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-400">{{ r.teleports }}</td>
           </tr>

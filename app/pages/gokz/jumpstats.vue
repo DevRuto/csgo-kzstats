@@ -48,7 +48,7 @@ const jumpTypeName = computed(() => gokzJumpTypeName(jumpType.value))
           <tr v-for="j in jumps" :key="j.steamId32" class="hover:bg-neutral-900/50">
             <td class="px-4 py-2"><RankBadge :rank="j.rank" /></td>
             <td class="px-4 py-2 text-neutral-200">
-              {{ j.alias ?? 'Unknown' }}
+              <NuxtLink :to="`/players/${j.steamId32}`" class="hover:text-amber-400">{{ j.alias ?? 'Unknown' }}</NuxtLink>
               <span v-if="j.country" class="text-neutral-500 text-xs ml-1">{{ j.country }}</span>
             </td>
             <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-200">{{ j.distance.toFixed(3) }}</td>

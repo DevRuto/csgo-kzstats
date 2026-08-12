@@ -6,7 +6,10 @@ const { data: topRanks, status: ranksStatus } = await useFetch('/api/kztimer/ran
 
 <template>
   <div>
-    <h1 class="text-2xl font-bold text-neutral-100 mb-6">KZTimer</h1>
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <h1 class="text-2xl font-bold text-neutral-100">KZTimer</h1>
+      <PlayerSearch system="kztimer" />
+    </div>
 
     <div v-if="stats" class="grid grid-cols-3 gap-3 mb-10">
       <StatCard label="Maps" :value="stats.maps" />
@@ -36,7 +39,7 @@ const { data: topRanks, status: ranksStatus } = await useFetch('/api/kztimer/ran
               <tr v-for="p in topRanks" :key="p.steamId" class="hover:bg-neutral-900/50">
                 <td class="px-4 py-2"><RankBadge :rank="p.rank" /></td>
                 <td class="px-4 py-2 text-neutral-200">
-                  {{ p.name }}
+                  <NuxtLink :to="`/players/${steam2ToSteamId32(p.steamId)}`" class="hover:text-amber-400">{{ p.name }}</NuxtLink>
                   <span v-if="p.country" class="text-neutral-500 text-xs ml-1">{{ p.country }}</span>
                 </td>
                 <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-200">{{ p.points.toLocaleString() }}</td>
@@ -54,7 +57,7 @@ const { data: topRanks, status: ranksStatus } = await useFetch('/api/kztimer/ran
           <div v-for="(r, i) in recent" :key="i" class="px-4 py-2.5 text-sm flex items-center justify-between gap-3">
             <div class="min-w-0">
               <div class="text-neutral-200 truncate">
-                <span class="font-medium">{{ r.name }}</span>
+                <NuxtLink :to="`/players/${steam2ToSteamId32(r.steamId)}`" class="font-medium hover:text-amber-400">{{ r.name }}</NuxtLink>
                 <span class="text-neutral-500"> on </span>
                 <NuxtLink :to="`/kztimer/maps/${r.map}`" class="hover:text-amber-400">{{ r.map }}</NuxtLink>
               </div>

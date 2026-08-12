@@ -81,7 +81,7 @@ const { data: records, status } = await useFetch(() => `/api/gokz/maps/${mapName
           <tr v-for="r in records" :key="r.steamId32" class="hover:bg-neutral-900/50">
             <td class="px-4 py-2"><RankBadge :rank="r.rank" /></td>
             <td class="px-4 py-2 text-neutral-200">
-              {{ r.alias ?? 'Unknown' }}
+              <NuxtLink :to="`/players/${r.steamId32}`" class="hover:text-amber-400">{{ r.alias ?? 'Unknown' }}</NuxtLink>
               <span v-if="r.country" class="text-neutral-500 text-xs ml-1">{{ r.country }}</span>
             </td>
             <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-200">{{ formatDurationMs(r.runTimeMs) }}</td>

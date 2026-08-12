@@ -42,7 +42,9 @@ const jumpTypeName = computed(() => kztimerJumpTypeName(jumpType.value))
           </tr>
           <tr v-for="j in jumps" :key="j.steamId" class="hover:bg-neutral-900/50">
             <td class="px-4 py-2"><RankBadge :rank="j.rank" /></td>
-            <td class="px-4 py-2 text-neutral-200">{{ j.name }}</td>
+            <td class="px-4 py-2 text-neutral-200">
+              <NuxtLink :to="`/players/${steam2ToSteamId32(j.steamId)}`" class="hover:text-amber-400">{{ j.name }}</NuxtLink>
+            </td>
             <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-200">{{ j.record.toFixed(3) }}</td>
             <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-400">{{ j.pre.toFixed(1) }}</td>
             <td class="px-4 py-2 text-right font-mono tabular-nums text-neutral-400">{{ j.max.toFixed(1) }}</td>
