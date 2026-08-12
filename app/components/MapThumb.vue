@@ -6,7 +6,7 @@ watch(() => props.src, () => { failed.value = false })
 </script>
 
 <template>
-  <div class="aspect-video w-full overflow-hidden bg-neutral-800">
+  <div class="aspect-video w-full overflow-hidden bg-ink-800">
     <img
       v-if="src && !failed"
       :src="src"
@@ -15,7 +15,7 @@ watch(() => props.src, () => { failed.value = false })
       class="h-full w-full object-cover"
       @error="failed = true"
     >
-    <div v-else class="flex h-full w-full items-center justify-center text-neutral-600 text-xs">
+    <div v-else class="flex h-full w-full items-center justify-center text-ink-600 text-xs">
       No image
     </div>
   </div>

@@ -14,6 +14,7 @@ const NuxtLinkStub = {
 function mountHeader(path: string, pub: { gokzEnabled: boolean; kztimerEnabled: boolean }) {
   vi.stubGlobal('useRoute', () => ({ path }))
   vi.stubGlobal('useRuntimeConfig', () => ({ public: pub }))
+  vi.stubGlobal('useColorMode', () => ({ preference: 'dark', value: 'dark' }))
   return mount(SiteHeader, { global: { stubs: { NuxtLink: NuxtLinkStub } } })
 }
 

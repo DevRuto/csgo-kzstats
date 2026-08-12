@@ -43,25 +43,25 @@ function onBlur() {
       v-model="search"
       type="search"
       placeholder="Search players&hellip;"
-      class="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-1.5 text-sm text-neutral-100 placeholder:text-neutral-600 focus:outline-none focus:border-amber-400/50"
+      class="w-full rounded-lg border border-ink-800 bg-ink-900 px-3 py-1.5 text-sm text-ink-100 placeholder:text-ink-600 focus:outline-none focus:border-accent/50"
       @focus="open = search.trim().length > 0"
       @blur="onBlur"
     >
     <div
       v-if="open && (status === 'pending' || results?.length)"
-      class="absolute z-20 mt-1 w-full rounded-lg border border-neutral-800 bg-neutral-900 shadow-lg max-h-72 overflow-y-auto"
+      class="absolute z-20 mt-1 w-full rounded-lg border border-ink-800 bg-ink-900 shadow-lg max-h-72 overflow-y-auto"
     >
-      <div v-if="status === 'pending'" class="px-3 py-2 text-xs text-neutral-500">Loading&hellip;</div>
+      <div v-if="status === 'pending'" class="px-3 py-2 text-xs text-ink-500">Loading&hellip;</div>
       <template v-else>
         <NuxtLink
           v-for="p in results"
           :key="key(p)"
           :to="accountId(p) !== null ? `/players/${accountId(p)}` : ''"
-          class="block px-3 py-2 text-sm text-neutral-200 hover:bg-neutral-800"
+          class="block px-3 py-2 text-sm text-ink-200 hover:bg-ink-800"
           @click="open = false"
         >
           {{ label(p) }}
-          <span v-if="p.country" class="text-neutral-500 text-xs ml-1">{{ p.country }}</span>
+          <span v-if="p.country" class="text-ink-500 text-xs ml-1">{{ p.country }}</span>
         </NuxtLink>
       </template>
     </div>

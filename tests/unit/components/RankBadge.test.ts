@@ -10,8 +10,8 @@ describe('RankBadge', () => {
   })
 
   it.each([
-    [1, 'text-amber-400'],
-    [2, 'text-neutral-300'],
+    [1, 'text-accent'],
+    [2, 'text-ink-300'],
     [3, 'text-amber-700']
   ])('applies the medal color class for rank %i', (rank, klass) => {
     const wrapper = mount(RankBadge, { props: { rank } })
@@ -20,6 +20,6 @@ describe('RankBadge', () => {
 
   it('falls back to the default color class outside the top 3', () => {
     const wrapper = mount(RankBadge, { props: { rank: 42 } })
-    expect(wrapper.classes()).toContain('text-neutral-500')
+    expect(wrapper.classes()).toContain('text-ink-500')
   })
 })

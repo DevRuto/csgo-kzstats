@@ -17,7 +17,15 @@ const isDemo = process.env.DEMO === 'true'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+  tailwindcss: {
+    cssPath: '~/assets/css/main.css'
+  },
+  colorMode: {
+    classSuffix: '',
+    preference: 'system',
+    fallback: 'dark'
+  },
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {

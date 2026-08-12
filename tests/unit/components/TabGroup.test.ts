@@ -20,8 +20,8 @@ describe('TabGroup', () => {
   it('highlights the button matching modelValue', () => {
     const wrapper = mount(TabGroup, { props: { options, modelValue: 'tp' } })
     const buttons = wrapper.findAll('button')
-    expect(buttons[0]!.classes()).not.toContain('bg-amber-400')
-    expect(buttons[1]!.classes()).toContain('bg-amber-400')
+    expect(buttons[0]!.classes()).not.toContain('bg-accent')
+    expect(buttons[1]!.classes()).toContain('bg-accent')
   })
 
   it('emits update:modelValue with the clicked option value', async () => {

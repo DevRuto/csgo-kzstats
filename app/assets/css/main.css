@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * `ink-*` mirrors Tailwind's neutral scale, flipped so the same class names that
+ * built the original dark-only design (bg-ink-950 page background, text-ink-100
+ * headings, border-ink-800 borders, ...) produce a light theme by default and the
+ * original dark theme under `.dark`. `accent` is the amber brand color, darkened in
+ * light mode for contrast against a white background.
+ */
+:root {
+  --ink-50: 10 10 10;
+  --ink-100: 23 23 23;
+  --ink-200: 38 38 38;
+  --ink-300: 64 64 64;
+  --ink-400: 82 82 82;
+  --ink-500: 115 115 115;
+  --ink-600: 163 163 163;
+  --ink-700: 212 212 212;
+  --ink-800: 229 229 229;
+  --ink-900: 245 245 245;
+  --ink-950: 250 250 250;
+
+  --accent: 180 83 9;
+  --accent-hover: 146 64 14;
+}
+
+.dark {
+  --ink-50: 250 250 250;
+  --ink-100: 245 245 245;
+  --ink-200: 229 229 229;
+  --ink-300: 212 212 212;
+  --ink-400: 163 163 163;
+  --ink-500: 115 115 115;
+  --ink-600: 82 82 82;
+  --ink-700: 64 64 64;
+  --ink-800: 38 38 38;
+  --ink-900: 23 23 23;
+  --ink-950: 10 10 10;
+
+  --accent: 251 191 36;
+  --accent-hover: 252 211 77;
+}
