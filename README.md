@@ -73,3 +73,24 @@ npm run preview
 
 See the [Nuxt deployment docs](https://nuxt.com/docs/getting-started/deployment) for deploying
 the build output to your platform of choice.
+
+### Docker
+
+A `Dockerfile` is included for running the app in a container. It expects your GOKZ/KZTimer
+database to already be running somewhere reachable (this image only builds and serves the app).
+
+```bash
+docker build -t kzlocal-stats .
+docker run -d -p 3000:3000 \
+  -e DB_HOST=host.docker.internal \
+  -e DB_PORT=3306 \
+  -e DB_USER=your_db_user \
+  -e DB_PASSWORD=your_db_password \
+  -e DB_GOKZ_DATABASE=gokz \
+  -e DB_KZTIMER_DATABASE=kztimer \
+  kzlocal-stats
+```
+
+Open [http://localhost:3000](http://localhost:3000). Use `host.docker.internal` for `DB_HOST` if
+your database runs on the Docker host itself (Docker Desktop on Mac/Windows), or point it at the
+DB's actual host/IP otherwise.
