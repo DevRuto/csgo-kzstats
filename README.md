@@ -1,5 +1,7 @@
 # csgo-kzstats
 
+[![CI](https://github.com/DevRuto/csgo-kzstats/actions/workflows/ci.yml/badge.svg)](https://github.com/DevRuto/csgo-kzstats/actions/workflows/ci.yml)
+
 A local leaderboard site for **Kreedz Climbing (KZ)** servers. It reads directly from the
 MySQL/MariaDB databases used by the **GOKZ** and/or **KZTimer** SourceMod plugins and renders
 player ranks, map records, and jumpstats &mdash; no data entry, no syncing, just a read-only view
