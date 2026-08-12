@@ -5,7 +5,7 @@ const { public: pub } = useRuntimeConfig()
 <template>
   <div>
     <div class="mb-10">
-      <h1 class="text-3xl font-bold text-neutral-100">Local KZ Leaderboards</h1>
+      <h1 class="text-3xl font-bold text-neutral-100">{{ pub.serverName }} Leaderboards</h1>
       <p class="mt-2 max-w-2xl text-neutral-400">
         Records pulled straight from the two local Kreedz Climbing databases. GOKZ and KZTimer are
         separate plugins with separate data &mdash; nothing here is merged or reconciled between them.

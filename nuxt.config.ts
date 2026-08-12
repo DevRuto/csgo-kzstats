@@ -27,6 +27,7 @@ export default defineNuxtConfig({
       kztimerDatabase
     },
     public: {
+      serverName: process.env.SERVER_NAME || 'Local KZ',
       gokzEnabled: gokzDatabase !== '',
       kztimerEnabled: kztimerDatabase !== ''
     }
