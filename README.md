@@ -102,8 +102,9 @@ DB's actual host/IP otherwise.
 GitHub Pages can't run a database or server, so `.github/workflows/demo.yml` builds a static
 version of the site with `DEMO=true`, which swaps the GOKZ/KZTimer database for generated
 fixture data (see `app/mocks/`) instead of a real one. It runs on every push to `main` and
-publishes to GitHub Pages (enable it once under **Settings &rarr; Pages &rarr; Source: GitHub
-Actions**).
+pushes the build to a `gh-pages` branch (enable Pages once under **Settings &rarr; Pages &rarr;
+Source: Deploy from a branch, Branch: `gh-pages`** &mdash; the branch is created automatically
+the first time the workflow runs).
 
 To build it locally:
 
