@@ -1,0 +1,1 @@
+import{D as e,Ft as t,Lt as n,P as r,Y as i}from"./CkqLN61q.js";var a=Object.assign(r({__name:`RankBadge`,props:{rank:{}},setup(r){let a={1:`text-accent`,2:`text-ink-300`,3:`text-amber-700`};return(o,s)=>(i(),e(`span`,{class:t([`font-mono tabular-nums`,a[r.rank]??`text-ink-500`])},` #`+n(r.rank),3))}}),{__name:`RankBadge`});export{a as t};
