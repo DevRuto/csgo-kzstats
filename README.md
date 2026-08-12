@@ -96,3 +96,18 @@ docker run -d -p 3000:3000 \
 Open [http://localhost:3000](http://localhost:3000). Use `host.docker.internal` for `DB_HOST` if
 your database runs on the Docker host itself (Docker Desktop on Mac/Windows), or point it at the
 DB's actual host/IP otherwise.
+
+## Offline demo
+
+GitHub Pages can't run a database or server, so `.github/workflows/demo.yml` builds a static
+version of the site with `DEMO=true`, which swaps the GOKZ/KZTimer database for generated
+fixture data (see `app/mocks/`) instead of a real one. It runs on every push to `main` and
+publishes to GitHub Pages (enable it once under **Settings &rarr; Pages &rarr; Source: GitHub
+Actions**).
+
+To build it locally:
+
+```bash
+DEMO=true npm run generate
+npx serve .output/public
+```
