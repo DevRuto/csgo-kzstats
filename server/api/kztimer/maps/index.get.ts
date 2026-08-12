@@ -21,8 +21,11 @@ export default defineEventHandler(async (event) => {
     params
   )
 
+  const images = await getMapImages(rows.map(row => row.mapname as string))
+
   return rows.map(row => ({
     name: row.mapname as string,
-    players: row.players as number
+    players: row.players as number,
+    image: images.get(row.mapname as string) ?? null
   }))
 })

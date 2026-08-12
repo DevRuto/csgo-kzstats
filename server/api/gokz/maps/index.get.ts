@@ -21,11 +21,14 @@ export default defineEventHandler(async (event) => {
     params
   )
 
+  const images = await getMapImages(rows.map(row => row.Name as string))
+
   return rows.map(row => ({
     id: row.MapID as number,
     name: row.Name as string,
     inRankedPool: Boolean(row.InRankedPool),
     lastPlayed: row.LastPlayed as string | null,
-    courseCount: row.CourseCount as number
+    courseCount: row.CourseCount as number,
+    image: images.get(row.Name as string) ?? null
   }))
 })

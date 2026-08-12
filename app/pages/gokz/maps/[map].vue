@@ -25,11 +25,29 @@ const { data: records, status } = await useFetch(() => `/api/gokz/maps/${mapName
   <div>
     <div class="mb-6">
       <NuxtLink to="/gokz/maps" class="text-sm text-neutral-500 hover:text-neutral-300">&larr; All maps</NuxtLink>
-      <h1 class="text-2xl font-bold text-neutral-100 mt-1">{{ mapName }}</h1>
-      <div v-if="map" class="text-sm text-neutral-500 mt-1 flex items-center gap-2">
-        <span v-if="map.inRankedPool" class="text-amber-400/80">Ranked</span>
-        <span v-if="map.lastPlayed">Last played {{ new Date(map.lastPlayed).toLocaleDateString() }}</span>
+
+      <div
+        v-if="map?.image"
+        class="relative mt-2 h-48 sm:h-64 rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900"
+      >
+        <img :src="map.image" :alt="mapName" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/30 to-transparent" />
+        <div class="absolute inset-x-0 bottom-0 px-5 py-4">
+          <h1 class="text-2xl font-bold text-neutral-100">{{ mapName }}</h1>
+          <div class="text-sm text-neutral-300 mt-1 flex items-center gap-2">
+            <span v-if="map.inRankedPool" class="text-amber-400">Ranked</span>
+            <span v-if="map.lastPlayed">Last played {{ new Date(map.lastPlayed).toLocaleDateString() }}</span>
+          </div>
+        </div>
       </div>
+
+      <template v-else>
+        <h1 class="text-2xl font-bold text-neutral-100 mt-1">{{ mapName }}</h1>
+        <div v-if="map" class="text-sm text-neutral-500 mt-1 flex items-center gap-2">
+          <span v-if="map.inRankedPool" class="text-amber-400/80">Ranked</span>
+          <span v-if="map.lastPlayed">Last played {{ new Date(map.lastPlayed).toLocaleDateString() }}</span>
+        </div>
+      </template>
     </div>
 
     <div class="flex flex-wrap items-center gap-3 mb-4">

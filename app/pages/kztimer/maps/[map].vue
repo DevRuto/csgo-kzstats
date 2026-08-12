@@ -2,6 +2,8 @@
 const route = useRoute()
 const mapName = computed(() => route.params.map as string)
 
+const { data: map } = await useFetch(() => `/api/kztimer/maps/${mapName.value}`)
+
 const type = ref<'pro' | 'tp'>('pro')
 const typeOptions = [
   { label: 'Pro', value: 'pro' },
@@ -17,7 +19,19 @@ const { data: records, status } = await useFetch(() => `/api/kztimer/maps/${mapN
   <div>
     <div class="mb-6">
       <NuxtLink to="/kztimer/maps" class="text-sm text-neutral-500 hover:text-neutral-300">&larr; All maps</NuxtLink>
-      <h1 class="text-2xl font-bold text-neutral-100 mt-1">{{ mapName }}</h1>
+
+      <div
+        v-if="map?.image"
+        class="relative mt-2 h-48 sm:h-64 rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900"
+      >
+        <img :src="map.image" :alt="mapName" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/30 to-transparent" />
+        <div class="absolute inset-x-0 bottom-0 px-5 py-4">
+          <h1 class="text-2xl font-bold text-neutral-100">{{ mapName }}</h1>
+        </div>
+      </div>
+
+      <h1 v-else class="text-2xl font-bold text-neutral-100 mt-1">{{ mapName }}</h1>
     </div>
 
     <div class="flex flex-wrap items-center gap-3 mb-4">

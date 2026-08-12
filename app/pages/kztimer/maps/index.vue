@@ -27,15 +27,18 @@ const { data: maps, status } = await useFetch('/api/kztimer/maps', {
 
     <div v-if="status === 'pending'" class="text-neutral-500 text-sm">Loading&hellip;</div>
     <div v-else-if="!maps?.length" class="text-neutral-500 text-sm">No maps found.</div>
-    <div v-else class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+    <div v-else class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <NuxtLink
         v-for="map in maps"
         :key="map.name"
         :to="`/kztimer/maps/${map.name}`"
-        class="rounded-lg border border-neutral-800 bg-neutral-900/60 px-4 py-3 hover:border-amber-400/50 transition-colors"
+        class="group rounded-lg border border-neutral-800 bg-neutral-900/60 overflow-hidden hover:border-amber-400/50 transition-colors"
       >
-        <div class="text-neutral-200 font-medium truncate">{{ map.name }}</div>
-        <div class="text-xs text-neutral-500 mt-1">{{ map.players }} player{{ map.players === 1 ? '' : 's' }}</div>
+        <MapThumb :src="map.image" :alt="map.name" />
+        <div class="px-4 py-3">
+          <div class="text-neutral-200 font-medium truncate group-hover:text-amber-400 transition-colors">{{ map.name }}</div>
+          <div class="text-xs text-neutral-500 mt-1">{{ map.players }} player{{ map.players === 1 ? '' : 's' }}</div>
+        </div>
       </NuxtLink>
     </div>
   </div>

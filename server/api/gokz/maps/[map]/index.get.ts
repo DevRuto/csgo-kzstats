@@ -21,6 +21,8 @@ export default defineEventHandler(async (event) => {
     [map.MapID]
   )
 
+  const image = await getMapImage(map.Name as string)
+
   return {
     id: map.MapID as number,
     name: map.Name as string,
@@ -30,6 +32,7 @@ export default defineEventHandler(async (event) => {
     courses: courses.map(c => ({
       mapCourseId: c.MapCourseID as number,
       course: c.Course as number
-    }))
+    })),
+    image
   }
 })
